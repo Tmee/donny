@@ -1,0 +1,35 @@
+<%= render partial: 'nav_bar' %>
+<div class="container">
+  <div class="row fullpage construction-zone top-flash">
+    <br/>
+    <br/>
+    <div class="col-sm-12 text-center">
+      <h2> Under Construction</h2>
+      <hr/>
+      <h4 class="text-muted">Check back soon for something cool</h4>
+    </div>
+    <a href="#info" id= 'scroll-to-info' >
+      <i class="fa fa-arrow-circle-o-down fa-4x"></i>
+    </a>
+  </div>
+</div>
+  <div class="row fullpage" id='info'>
+    <header class="header-image info-header">
+      <div class="headline">
+        <div class="container">
+          <h1>Hello,</h1>
+          <h2>Thanks for visiting!</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class='info-body'>
+      <div class="container">
+        <%= render partial: 'info/career' %>
+        <%= render partial: 'info/interests' %>
+        <%= render partial: 'info/history' %>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+
+  postgresql:
+    container_name: core-postgres
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/dev:/var/lib/postgresql/data
+    networks:
+      - donny
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=donny_db
+      
+  blog-web:
+    container_name: blog-web
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: blog-web:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - donny
+    depends_on:
+      - postgresql  
+    environment:
+      - DB_DONNY_PASSWORD=postgres
+      - DB_DONNY_HOSTNAME=postgres
+      - DB_DONNY=donny_db
+      - DB_POOL_SIZE=3
+
+networks:
+  donny:
